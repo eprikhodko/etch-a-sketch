@@ -15,20 +15,21 @@ html {
     font-family: 'Walter Turncoat', cursive;
    }
 
-   .container {
+   .grid-container {
        padding: 10px;
        margin: 10px;
        width: 240px;
        height: 240px;
-       background-color: brown;
+       /* background-color: brown; */
        display: grid;
        grid-gap: 5px;
        /* number of columns, 4 columns and they will spread as */
-       grid-template-columns: repeat(4, 1fr);
+       grid-template-columns: repeat(16, 1fr);
    }
 
    .grid-element {
        background-color: burlywood;
-       width: 50px;
-       height: 50px;
+       width: 30px;
+       height: 30px;
+       font-size: .7rem;
    }
