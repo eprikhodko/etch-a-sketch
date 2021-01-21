@@ -7,34 +7,34 @@ let gridElement = document.createElement("div");
 //  set class name
 gridElement.className = "grid-element";
 
-
-// append this single elements to the parent grid container div
+// append this element to the parent grid container div X amount of times
 for (let i = 0; i < 256; i++) {
-    //append li element to the unordered list
-    // console.log("loop is working");
+    //append gridElement to the gridContainer
     gridContainer.appendChild(gridElement.cloneNode(true));
 }
 
-// select all grid elements
-let allGridElements = document.querySelectorAll('.grid-element');
+// select all grid elements by class-name
+let gridElements = document.querySelectorAll('.grid-element');
 
-allGridElements.forEach(item => {
+// add event listener to every element of grid
+// item word can be replaced to anything else
+gridElements.forEach(item => {
     item.addEventListener("mouseenter", event => {
-      //  add event listener
- 
-    console.log("click!");
     item.className = "grid-element-black";
-  
     })
   })
 
-// let gridElementTest = document.getElementById("grid-element-test");
-
-// gridElementTest.addEventListener("mouseenter", function() {
-//     console.log("click!");
-//     gridElementTest.className = "grid-element-black";
+//   gridElements.forEach(function (item) {
+//     item.addEventListener("mouseenter", event => {
+//     item.className = "grid-element-black";
+//         })
 //   })
 
+// gridElements.forEach(function (item) {
+//     item.addEventListener("mouseenter", function (event) {
+//     item.className = "grid-element-black";
+//         })
+//   })
 
 //  gridContainer.appendChild(gridElement);
 // gridContainer.appendChild(gridElement.cloneNode(true));
