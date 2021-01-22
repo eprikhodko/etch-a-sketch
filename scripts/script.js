@@ -1,3 +1,6 @@
+// select button reset
+let buttonReset = document.getElementById("button-reset");
+
 //select a grid-container div
 let gridContainer = document.getElementById("grid-container");
 
@@ -23,6 +26,20 @@ gridElements.forEach(item => {
     item.className = "grid-element-black";
     })
   })
+
+let gridSize = 16;
+// add event listener to button reset and clear the grid
+buttonReset.addEventListener("click", event => {
+  gridElements.forEach(item => {item.className = "grid-element";});
+  let newGridSize = prompt("How many squares per side to make the new grid?")
+}
+)
+
+// we can also write it like this:
+// looks like we need event word in arrow function just for proper syntax
+// buttonReset.addEventListener("click", function() {
+//   console.log("click");
+// })
 
 //   gridElements.forEach(function (item) {
 //     item.addEventListener("mouseenter", event => {
