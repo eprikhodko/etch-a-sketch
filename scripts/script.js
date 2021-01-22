@@ -1,3 +1,5 @@
+// what I learned. I need something like this
+
 // select button reset
 let buttonReset = document.getElementById("button-reset");
 
@@ -9,6 +11,11 @@ let gridElement = document.createElement("div");
 
 //  set class name
 gridElement.className = "grid-element";
+
+// select grid container and set default columns property
+// gridContainer.style.gridTemplateColumns = "repeat(8, 1fr)";
+
+
 
 // append this element to the parent grid container div X amount of times
 for (let i = 0; i < 256; i++) {
@@ -24,14 +31,53 @@ let gridElements = document.querySelectorAll('.grid-element');
 gridElements.forEach(item => {
     item.addEventListener("mouseenter", event => {
     item.className = "grid-element-black";
-    })
-  })
+    console.log("working");
+    });
+    
+})
 
-let gridSize = 16;
+
+
+// set default grid size
+let newGridSize = 16;
+
+// ask user for a new grid size
+function getNewGridSize() {
+  return newGridSize = prompt("How many squares per side to make the new grid?")
+}
+
+// let newGridSize = () => prompt("How many squares per side to make the new grid?");
+
+// modify grid columns property
+function changeGridColumns() {
+  // console.log("hello");
+  // change grid columns depending on user input
+  return gridContainer.style.gridTemplateColumns = `repeat(${newGridSize}, 1fr)`;
+}
+
 // add event listener to button reset and clear the grid
 buttonReset.addEventListener("click", event => {
   gridElements.forEach(item => {item.className = "grid-element";});
-  let newGridSize = prompt("How many squares per side to make the new grid?")
+  // get new grid size
+  getNewGridSize();
+  // remove old elements
+  document.querySelectorAll('.grid-element').forEach(e => e.parentNode.removeChild(e));
+  document.querySelectorAll('.grid-element-black').forEach(e => e.parentNode.removeChild(e));
+
+// generate new grid
+  for (let i = 0; i < newGridSize*newGridSize; i++) {
+    //append gridElement to the gridContainer
+    gridContainer.appendChild(gridElement.cloneNode(true));
+  }
+  changeGridColumns();
+  let userGridElements = document.querySelectorAll(".grid-element");
+  userGridElements.forEach(item => {
+    item.addEventListener("mouseenter", event => {
+    item.className = "grid-element-black";
+    console.log("working");
+    });
+    
+})
 }
 )
 
