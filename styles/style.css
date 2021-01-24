@@ -13,7 +13,6 @@ body {
   background-color: rgb(255, 231, 14);
   margin: 0;
   padding: 0;
-  font-family: 'Walter Turncoat', cursive;
  }
 
 .main-container {
@@ -42,20 +41,19 @@ h1 {
 }
 
 .grid-container {
-    padding: 4px;
     margin: 40px auto auto auto;
     width: 500px;
     height: 500px;
     background-color: rgb(0, 0, 0);
     display: grid;
-    grid-gap: 2px;
-    /* number of columns, 4 columns and they will spread as */
     grid-template-columns: repeat(16, 1fr);
+    border: 1px solid;
 }
 
 .grid-element {
     background-color: rgb(255, 255, 255);
     font-size: .7rem;
+    border: 1px solid;
 }
 
 .grid-element-test {
@@ -65,4 +63,5 @@ h1 {
 .grid-element-black {
     background-color: black;
     font-size: .7rem;
+    border: 1px solid;
 }
