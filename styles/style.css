@@ -17,37 +17,42 @@ body {
 
 .main-container {
     display: flex;
-    flex-direction: column;
-    margin: 0;
-    padding: 0;
-    /* background-color: cornsilk; */
+    /* flex-direction: column; */
+    /* justify-content: flex-end; */
+    /* align-items: flex-start; */
+    margin: auto;
+    width: 500px;
+    /* background-color: brown; */
+    flex-flow: row wrap;
 }
 
 h1 {
     /* background-color: crimson; */
-    margin: 20px auto auto auto;
+    margin: 20px auto 20px auto;
     font-size: 6rem;
     font-family: 'VT323', monospace;
     text-shadow: 5px 5px rgba(97, 97, 97, 0.5);
+    flex: 100%;
 }
 
 
-.button-reset {
+.button-simple {
     background-color: rgb(255, 255, 255);
-    /* width: 50px;
-    height: 20px; */
-    margin: 30px auto 0px auto;
+    /* width: 120px; */
+    /* height: 20px;  */
+    margin: 0px 20px 0px 0px;
     font-size: 2rem;
 }
 
 .grid-container {
-    margin: 40px auto auto auto;
+    margin: 20px auto auto auto;
     width: 500px;
     height: 500px;
     background-color: rgb(0, 0, 0);
     display: grid;
     grid-template-columns: repeat(16, 1fr);
     border: 1px solid;
+    box-shadow: 5px 5px 8px rgba(97, 97, 97, 0.5);
 }
 
 .grid-element {
