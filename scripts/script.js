@@ -1,9 +1,11 @@
-// what I learned. I need something like this
-
+// what I learned. I need something like this. maybe.
+'use strict';
 // Ok. So how it is all work?
 
 // select reset button
 let buttonReset = document.getElementById("button-reset");
+// select change size button
+let buttonSize = document.getElementById("button-size");
 // select a grid-container div
 let gridContainer = document.getElementById("grid-container");
 // create a new div element (Create a <div> node)
@@ -15,7 +17,6 @@ let gridElements = document.querySelectorAll('.grid-element');
 
 // create default grid which is 16x16 divs
 createDefaultGrid();
-
 // create default grid layout which is 16x16 grid-elements.
 // Grid size defines by two values. First one exist in styles.css file. It is grid-template-columns: repeat(16, 1fr); property of .grid-container class. Number of 16 can vary and defines amount of grid columns. Number of rows defines by the amount of grid-elements. To make a square grid with square grid-elements, you need to set number of columns in css grid first, then you need to square this number and create corresponding number of grid-elements to fill this grid up.
 // for example, if number of grid columns is 16, you need to create a 16x16 = 256 grid elements. FOR Loop will help us to do that. Below you can find a function that will make a default grid for us.
@@ -37,42 +38,63 @@ function createDefaultGrid() {
 })
 }
 
-// set default grid size
-// let newGridSize = 16;
+// declare newGridSize variable
+let newGridSize;
 
 // ask user for a new grid size
 function getNewGridSize() {
   return newGridSize = prompt("How many squares per side to make the new grid?");
 }
+
 // modify grid columns property
 function changeGridColumns() {
   // change grid columns depending on user input
   return gridContainer.style.gridTemplateColumns = `repeat(${newGridSize}, 1fr)`;
 }
 
-// add event listener to button reset and clear the grid
-buttonReset.addEventListener("click", event => {
-  // get new grid size
-  getNewGridSize();
+
+function removeAllGridElements() {
   // remove old elements
   document.querySelectorAll('.grid-element').forEach(e => e.parentNode.removeChild(e));
   document.querySelectorAll('.grid-element-black').forEach(e => e.parentNode.removeChild(e));
+}
+
+function generateNewGrid() {
 // generate new grid
   for (let i = 0; i < newGridSize**2; i++) {
-    //append gridElement to the gridContainer
-    gridContainer.appendChild(gridElement.cloneNode(true));
+  //append gridElement to the gridContainer
+  gridContainer.appendChild(gridElement.cloneNode(true));
   }
   changeGridColumns();
   let userGridElements = document.querySelectorAll(".grid-element");
   userGridElements.forEach(item => {
-    item.addEventListener("mouseenter", event => {
-    item.className = "grid-element-black";
-    console.log("working");
-    });
-    
+  item.addEventListener("mouseenter", event => {
+  item.className = "grid-element-black";
+  });
 })
 }
-)
+
+function removeBlackGridElements() {
+  let markedElements = document.querySelectorAll('.grid-element-black');
+  markedElements.forEach(item => {
+    item.className = "grid-element";
+  })
+}
+
+// add event listener to button change size
+buttonSize.addEventListener("click", event => {
+  // get new grid size
+  getNewGridSize();
+  // remove old elements
+  removeAllGridElements();
+  // generate new grid
+  generateNewGrid();
+})
+
+// add event listener to button reset
+buttonReset.addEventListener("click", event => {
+  removeBlackGridElements();
+})
 
 // we can also write it like this:
 // looks like we need event word in arrow function just for proper syntax
