@@ -17,17 +17,12 @@ body {
 
 .main-container {
     display: flex;
-    /* flex-direction: column; */
-    /* justify-content: flex-end; */
-    /* align-items: flex-start; */
     margin: auto;
     width: 500px;
-    /* background-color: brown; */
     flex-flow: row wrap;
 }
 
 h1 {
-    /* background-color: crimson; */
     margin: 20px auto 20px auto;
     font-size: 6rem;
     font-family: 'VT323', monospace;
@@ -38,8 +33,6 @@ h1 {
 
 .button-simple {
     background-color: rgb(255, 255, 255);
-    /* width: 120px; */
-    /* height: 20px;  */
     margin: 0px 20px 0px 0px;
     font-size: 2rem;
 }

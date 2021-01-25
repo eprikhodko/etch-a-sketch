@@ -42,9 +42,22 @@ function createDefaultGrid() {
 let newGridSize;
 
 // ask user for a new grid size
+// function getNewGridSize() {
+//   return newGridSize = prompt("How many squares per side to make the new grid?");
+// }
+
+// ask user for a new grid size
 function getNewGridSize() {
-  return newGridSize = prompt("How many squares per side to make the new grid?");
+  newGridSize = prompt("How many squares per side to make the new grid?");
+  if (typeof newGridSize !== "string" || newGridSize === "") {
+    console.log("not ok");
+    newGridSize = prompt("Please enter a number between 1 and 50");
+  } else {
+    console.log(newGridSize);
+    console.log("we got proper value from prompt, moving on");
+  }
 }
+
 
 // modify grid columns property
 function changeGridColumns() {
@@ -85,10 +98,17 @@ function removeBlackGridElements() {
 buttonSize.addEventListener("click", event => {
   // get new grid size
   getNewGridSize();
-  // remove old elements
-  removeAllGridElements();
-  // generate new grid
-  generateNewGrid();
+
+  if (newGridSize === null || newGridSize === "") {
+    console.log("its null or empty string, do nothing");
+  } else if (typeof newGridSize === "string"){
+    console.log("continue");
+    // remove old elements
+    removeAllGridElements();
+    // generate new grid
+    generateNewGrid();    
+  }
+
 })
 
 // add event listener to button reset
