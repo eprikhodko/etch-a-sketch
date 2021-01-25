@@ -38,19 +38,16 @@ function createDefaultGrid() {
 })
 }
 
+
 // declare newGridSize variable
 let newGridSize;
 
 // ask user for a new grid size
-// function getNewGridSize() {
-//   return newGridSize = prompt("How many squares per side to make the new grid?");
-// }
-
-// ask user for a new grid size
 function getNewGridSize() {
-  newGridSize = prompt("How many squares per side to make the new grid?");
-  if (typeof newGridSize !== "string" || newGridSize === "") {
+  newGridSize = parseInt(prompt("How many squares per side to make the new grid?"));
+  if (isNaN(newGridSize)) {
     console.log("not ok");
+    console.log(newGridSize);
     newGridSize = prompt("Please enter a number between 1 and 50");
   } else {
     console.log(newGridSize);
@@ -58,13 +55,17 @@ function getNewGridSize() {
   }
 }
 
-
-// modify grid columns property
-function changeGridColumns() {
-  // change grid columns depending on user input
-  return gridContainer.style.gridTemplateColumns = `repeat(${newGridSize}, 1fr)`;
+function changeGridSize() {
+  if (newGridSize === null || newGridSize === "" || isNaN(newGridSize)) {
+    console.log("its null or empty string, or it is not a number, do nothing");
+  } else if (isNaN(newGridSize) === false) {
+    console.log("continue");
+    // remove old elements
+    removeAllGridElements();
+    // generate new grid
+    generateNewGrid();    
+  }
 }
-
 
 function removeAllGridElements() {
   // remove old elements
@@ -73,19 +74,34 @@ function removeAllGridElements() {
 }
 
 function generateNewGrid() {
-// generate new grid
-  for (let i = 0; i < newGridSize**2; i++) {
-  //append gridElement to the gridContainer
-  gridContainer.appendChild(gridElement.cloneNode(true));
+  // generate new grid
+    for (let i = 0; i < newGridSize**2; i++) {
+    //append gridElement to the gridContainer
+    gridContainer.appendChild(gridElement.cloneNode(true));
+    }
+    changeGridColumns();
+    let userGridElements = document.querySelectorAll(".grid-element");
+    userGridElements.forEach(item => {
+    item.addEventListener("mouseenter", event => {
+    item.className = "grid-element-black";
+    });
+  })
   }
-  changeGridColumns();
-  let userGridElements = document.querySelectorAll(".grid-element");
-  userGridElements.forEach(item => {
-  item.addEventListener("mouseenter", event => {
-  item.className = "grid-element-black";
-  });
+
+// modify grid columns property
+function changeGridColumns() {
+  // change grid columns depending on user input
+  return gridContainer.style.gridTemplateColumns = `repeat(${newGridSize}, 1fr)`;
+} 
+
+
+// add event listener to button change size
+buttonSize.addEventListener("click", event => {
+  // get new grid size
+  getNewGridSize();
+  // change grid size
+  changeGridSize();
 })
-}
 
 function removeBlackGridElements() {
   let markedElements = document.querySelectorAll('.grid-element-black');
@@ -93,23 +109,6 @@ function removeBlackGridElements() {
     item.className = "grid-element";
   })
 }
-
-// add event listener to button change size
-buttonSize.addEventListener("click", event => {
-  // get new grid size
-  getNewGridSize();
-
-  if (newGridSize === null || newGridSize === "") {
-    console.log("its null or empty string, do nothing");
-  } else if (typeof newGridSize === "string"){
-    console.log("continue");
-    // remove old elements
-    removeAllGridElements();
-    // generate new grid
-    generateNewGrid();    
-  }
-
-})
 
 // add event listener to button reset
 buttonReset.addEventListener("click", event => {
