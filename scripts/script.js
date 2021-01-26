@@ -3,9 +3,9 @@
 // Ok. So how it is all work?
 
 // select reset button
-let buttonReset = document.getElementById("button-reset");
+const buttonReset = document.getElementById("button-reset");
 // select change size button
-let buttonSize = document.getElementById("button-size");
+const buttonSize = document.getElementById("button-size");
 // select a grid-container div
 let gridContainer = document.getElementById("grid-container");
 // create a new div element (Create a <div> node)
