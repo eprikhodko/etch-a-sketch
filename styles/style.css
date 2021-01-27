@@ -37,8 +37,7 @@ h1 {
     font-family: 'VT323', monospace;
     font-size: 2.7rem;
     box-shadow: 5px 5px 0px rgba(97, 97, 97, 0.5);
-    /* border: solid 1px red; */
-    -webkit-appearance: none;
+    /* -webkit-appearance: none; */
   
 }
 
@@ -47,13 +46,12 @@ h1 {
 }
 
 /* :active pseudo class is when we click and hold a button */
-.button-simple:active {
-    /* border-radius: 30px; */
-}
+/* .button-simple:active {
+     border-radius: 30px; 
+} */
 
 /* looks like :focus pseudoclass happens when we clicked some button. After click this button changes its appearence. Like a visited link. Add a background and see what happens */
 .button-simple:focus {
-    /* border-radius: 30px; */
     /* -webkit-appearance: none; */
     /* outline: seagreen; */
     outline: 0;
